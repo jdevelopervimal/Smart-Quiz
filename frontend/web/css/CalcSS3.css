@@ -1,0 +1,595 @@
+/* ------- calculator housing ------- */
+
+.calc-main {
+	display: block;
+	/* width: 480px; */ /* only needed in Chrome extension */
+	padding: 16px 10px 18px;
+	font: bold 15px/28px Arial, Helvetica, sans-serif;
+	border-radius: 12px;
+	box-shadow:
+		inset  0px -38px 5px rgba(  0,   0,   0, 0.8),
+		inset  0px   6px 4px rgba(255, 255, 255, 0.25),
+		inset  0px   2px 1px rgba(255, 255, 255, 0.25),
+		inset  3px   0px 3px rgba(255, 255, 255, 0.25),
+		inset -4px   0px 4px rgba(  0,   0,   0, 0.75);
+	background: #141414; /* Old browsers */
+	background: -moz-linear-gradient(top,  #141414 45%, #282828 80%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(45%,#141414), color-stop(80%,#282828)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #141414 45%,#282828 80%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #141414 45%,#282828 80%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #141414 45%,#282828 80%); /* IE10+ */
+	background: linear-gradient(to bottom,  #141414 45%,#282828 80%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#141414', endColorstr='#282828',GradientType=0 ); /* IE6-9 */
+}
+.calc-main:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.calc-small {
+	/* width: 240px; */ /* only needed in Chrome extension */
+}
+.calc-main.col-md-5 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    max-height: 326px;
+    max-width: 510px;
+				visibility: hidden;
+}
+/* --------- display --------- */
+
+.calc-display {
+	position: relative;
+	height: 60px;
+	margin: 0 5px 6px 5px;
+	padding: 0 8px;
+	border-radius: 5px;
+	box-shadow:
+		inset 0 30px 1px rgba(255, 255, 255, 0.25),
+		inset 0 -1px 2px rgba(255, 255, 255, 0.5),
+		inset 0  2px 3px rgba(  0,   0,   0, 0.40);
+	font-size: 45px;
+	line-height: 61px;
+	text-align: right;
+	white-space: nowrap;
+	color: #333;
+	cursor: default;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.01); /* for nicer/smoother rendering */
+	background: #edefe0; /* Old browsers */
+	background: -moz-linear-gradient(top,  #edefe0 45%, #babea2 80%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(45%,#edefe0), color-stop(80%,#babea2)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #edefe0 45%,#babea2 80%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #edefe0 45%,#babea2 80%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #edefe0 45%,#babea2 80%); /* IE10+ */
+	background: linear-gradient(to bottom,  #edefe0 45%,#babea2 80%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edefe0', endColorstr='#babea2',GradientType=0 ); /* IE6-9 */
+}
+.calc-rad {
+	position: absolute;
+	bottom: 2px;
+	font-size: 14px;
+	line-height: 14px;
+	left: 11px;
+}
+.calc-small .calc-rad {
+	display: none;
+}
+.calc-hold {
+	position: absolute;
+	right: 5px;
+	bottom: 1px;
+	font-size: 8px;
+	line-height: 13px;
+	color: #666;
+	height: 12px;
+}
+
+/* ----- display helper buttons ----- */
+
+.calc-buttons {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	opacity: .35;
+	height: 14px;
+	width: 14px;
+	transition:
+		opacity 0.15s ease-in;
+}
+.calc-buttons:hover {
+	opacity: 0.75;
+	height: 100%;
+	width: 17px;
+}
+.calc-buttons div {
+	position: absolute;
+	top: 1px;
+	height: 11px;
+	width: 11px;
+	font-size: 8px;
+	text-align: center;
+	text-decoration: none;
+	line-height: 12px;
+	text-indent: 1px;
+	color: #333;
+	cursor: default;
+	border-radius: 50%;
+	border: 1px solid #444;
+}
+.calc-buttons .calc-smaller {
+	opacity: 0;
+}
+.calc-buttons .calc-ln {
+	font-size: 17px;
+	line-height: 2px;
+	overflow: hidden;
+	opacity: 0;
+}
+.calc-buttons:hover div {
+	transition:
+		opacity 0.15s ease-in,
+		top 0.25s ease-out;
+}
+
+.calc-buttons:hover .calc-smaller {
+	top: 15px;
+	opacity: 0.75;
+}
+.calc-buttons:hover .calc-ln {
+	top: 29px;
+	opacity: 0.75;
+}
+.calc-buttons .calc-info:hover, .calc-buttons .calc-smaller:hover, .calc-buttons .calc-ln:hover {
+	opacity: 1;
+}
+
+/* -------- key board -------- */
+
+.calc-left, .calc-right {
+	position: relative;
+	float: left;
+	width: 240px;
+}
+
+.calc-small .calc-left {
+	display: none;
+}
+.calc-f17 {
+	font-size: 17px;
+}
+.calc-f18 {
+	font-size: 18px;
+}
+.calc-f19 {
+	font-size: 19px;
+}
+.calc-f21 {
+	font-size: 21px;
+}
+.calc-main textarea {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	left: 4px;
+	top: 4px;
+	border: 0;
+	background-color: transparent;
+}
+
+/* -------- key board keys -------- */
+
+.calc-left > div, .calc-right > div {
+	margin: 5px 4px;
+	position: relative;
+	width: 50px;
+	height: 28px;
+	background-color: #4c5356;
+	border: 1px solid black;
+	box-shadow: 0 1px rgba(255, 255, 255, 0.1);
+	border-radius: 6px;
+	overflow: hidden;
+	float: left;
+	cursor: default;
+}
+.calc-left > div > div, .calc-right > div > div {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	height: 28px;
+	left: 0px;
+	width: 100%;
+	border: 1px solid #000;
+	border-radius: 6px;
+	color: #eee;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	text-align: center;
+	background: #656e72;
+	
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	border-bottom-left-radius: 26px 6px;
+	border-bottom-right-radius: 26px 6px;
+	box-shadow:
+		inset 0 -15px 1px rgba(  0,   0,   0, 0.25),
+		inset 0   1px 1px rgba(255, 255, 255, 0.4),
+		inset 0   6px 6px rgba(255, 255, 255, 0.25);
+	border: none;
+}
+.calc-left > div > div:hover, .calc-right > div > div:hover {
+	text-shadow:
+		0px  0px  8px  rgb(255, 230, 186),
+		0px  0px 22px  rgb(255, 255, 255),
+		0px -1px  0px rgba(  0,   0,   0, 0.5);
+}
+.calc-right .calc-eq {
+	height: 68px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: #EA6811;
+}
+.calc-down {
+	padding-top: 40px;
+}
+.calc-radxy sup {
+	padding-bottom: 4px;
+	display: block;
+	position: absolute;
+	left: 14px;
+	top: 6px;
+}
+.calc-radxy em {
+	font-weight: normal;
+	font-size: 16px;
+	padding-right: 2px;
+}
+.calc-right .calc-zero {
+	width: 110px;
+}
+.calc-right .calc-zero div {
+	text-align: left;
+}
+.calc-right .calc-zero span {
+	padding-left: 22px;
+}
+.calc-blank {
+	border-color: transparent;
+	background: none;
+	background-image: none;
+	box-shadow: none;
+	clear: right;
+}
+.calc-right .calc-brown > div {
+	background-color: #635045;
+}
+.calc-right .calc-brown {
+	background-color: #4b3c34;
+}
+
+.calc-right .calc-black > div {
+	background-color: #000;
+	box-shadow:
+		inset 0 -13px 1px rgba(50,   50,  50, 0.5),
+		inset 0   1px 1px rgba(255, 255, 255, 0.25),
+		inset 0   8px 6px rgba(255, 255, 255, 0.2);
+}
+.calc-right .calc-black {
+	background-color: #181818;
+}
+.calc-right .calc-orange > div {
+	background-color: #FF7113;
+	box-shadow:
+		inset 0 -13px 1px rgba(148,  77,  18, 0.20),
+		inset 0  7px  6px rgba(255, 255, 255, 0.3),
+		inset 0  6px  6px rgba(255, 255, 255, 0.1);
+}
+.calc-left > div:active, .calc-right > div:active,
+.calc-left .calc-press, .calc-right .calc-press {
+	box-shadow:
+		inset 0 -9px 6px rgba(255, 255, 255, 0.35),
+			  0  1px     rgba(255, 255, 255, 0.15);
+}
+.calc-left > div:active > div, .calc-right > div:active > div,
+.calc-left .calc-press > div, .calc-right .calc-press > div {
+	background: none;
+	box-shadow:
+		inset 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+.calc-left .calc-active, .calc-right .calc-active {
+	box-shadow:
+		 1px  1px     rgb(220, 220, 240),
+		-1px -1px     rgb(220, 220, 240),
+		 1px -1px     rgb(220, 220, 240),
+		-1px  1px     rgb(220, 220, 240),
+		 2px  2px 2px rgb(220, 220, 240),
+		-2px -2px 2px rgb(220, 220, 240),
+		 2px -2px 2px rgb(220, 220, 240),
+		-2px  2px 2px rgb(220, 220, 240);
+	border-color: #333;
+}
+.calc-left .calc-second {
+	background-color: #222;
+}
+.calc-left .calc-second div {
+	text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7);
+	color: #EA6811;
+}
+sup, sub {
+	font-size: 10px;
+	line-height: 0;
+	padding-left: 1px;
+}
+
+.quiz-menu li i {
+    font-size: 34px;
+    padding: 10px;
+    color: #004DC7;
+}
+.checkbox label:after, 
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr,
+.radio .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: .25em;
+    width: 1.3em;
+    height: 1.3em;
+    float: left;
+    margin-right: .5em;
+}
+
+.radio .cr {
+    border-radius: 50%;
+    min-width: 20px;
+}
+
+.checkbox .cr .cr-icon,
+.radio .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+}
+
+.radio .cr .cr-icon {
+    margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon,
+.radio label input[type="radio"] + .cr > .cr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+.radio label input[type="radio"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr,
+.radio label input[type="radio"]:disabled + .cr {
+    opacity: .5;
+}
+
+/* normal */
+.wrapper{
+    position:fixed;
+    width:350px;
+    height:82%;
+    top:59px;
+    right:0;
+    margin-right:-251px;
+    /* Makes opening smoothly */
+    transition: margin-right ease 1s;
+    -moz-transition: margin-right ease 1s;
+    -webkit-transition: margin-right ease 1s;
+    -o-transition: margin-right ease 1s;
+}
+
+/* opened */
+.wrapper.opened,
+.wrapper:hover{
+    margin-right:0px;
+}
+.toggle {
+    position:relative;
+    display:block;
+    width:100px;
+    height:100%;
+    float:left;
+    text-align: center;
+    padding-top:0px;
+}
+.toggle .nav.nav-tabs li > a {
+    background: #004DC7;
+    margin-bottom: 4px;
+    color: #fff;
+    border-radius: 6px 0px 0px 6px;
+    border: none;
+    margin-right: 0px;
+}
+.toggle .nav.nav-tabs {
+    border: none;
+}
+.toggle .nav.nav-tabs li{
+		min-width: 100%;
+}
+/* toggle style when wrapper is hovered */
+.wrapper:hover .toggle{
+    color: white;
+}
+/*
+.wrapper:not(:hover) .toggle:before{
+	content:"Open ";
+}
+.wrapper:hover .toggle:before{
+	content:"Your ";
+}
+*/
+.cart {
+    position: relative;
+    width:250px;
+    height:100%;
+    float:right;
+    background: #fff;
+    border-left: 1px solid #9C9B9B;
+    box-shadow: -2px 1px 3px -2px #484242;
+}
+.cart .tab-content {
+    background: #fff;
+    max-height: 493px !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.wrap {
+    min-height: 99% !important;
+}
+ul.switch-question li {
+    float: left;
+				margin-bottom: 12px;
+}
+
+ul.switch-question {
+    list-style: none;
+				padding: 11px;
+}
+ul.switch-question a {
+    padding: 5px 10px;
+    background: #000;
+    margin: 3px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+				box-shadow: 0px 0px 2px #A5A5A5;
+}
+.cart h4 {
+    text-transform: capitalize;
+    text-align: center;
+    padding: 10px 6px;
+    background: #000;
+    color: #fff;
+    font-weight: bold;
+				margin: 0px;
+}
+a.visited {
+    background: #0AA900 !important;
+}
+a.skipped {
+    background: #F0FF10 !important;
+    color: #545353 !important;
+    
+}
+ul.switch-question a:hover {
+    background: #004DC7 !important;
+    color: #fff !important;
+}
+.wrapper .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+    color: #FFF;
+    text-decoration: none;
+    cursor: not-allowed;
+    background-color: #173B73;
+}
+.wrapper .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #FFF;
+    cursor: default;
+    background-color: #103063;
+    border: 1px solid #ddd;
+    border-bottom-color: #ddd;
+}
+.main-que{
+				border-right: 1px solid #000;
+    min-height: 500px;
+}
+form.question-options-form {
+    padding: 26px 0px;
+}
+.progress-custom {
+    display: block;
+    text-align: center;
+    width: 0;
+    height: 3px;
+    background: red;
+    transition: width .3s;
+}
+.progress-custom.hide-custom {
+    opacity: 0;
+    transition: opacity 1.3s;
+}
+.navbar-default {
+    border-top: none !important;
+}
+.cancel-msg {
+    text-align: center;
+ }
+.cancel-msg span {
+    font-size: 66px;
+    color: #F8FF10;
+}
+li#quiz-section {
+    padding: 11px 12px;
+    font-size: 25px;
+    color: #fff;
+}
+.is-countdown {
+    color: #fff;
+}
+label{
+		display: inline-flex !important;
+}
+.removable .tab-pane {
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding: 7px 15px;
+    background: #F7F7F7;
+}
+.removable .nav-tabs > li.active > a,.removable .nav-tabs > li.active > a:hover,.removable .nav-tabs > li.active > a:focus {
+    color: #FFF;
+    cursor: default;
+    background-color: #151515;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.col-md-6.removable {
+    max-height: 520px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+				min-height: 520px;
+}
+.calc-visible{
+		visibility: visible !important;
+}
+.footer {
+    position: fixed;
+    width: 100%;
+				bottom: 0;
+}
+.info {
+    display: block;
+    position: absolute;
+    bottom: -7px;
+}
+.radio p {
+    width: 93%;
+}.radio label, .checkbox label {
+    width: 96%;
+}

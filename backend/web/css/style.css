@@ -1,0 +1,186 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6 May, 2016, 11:49:40 AM
+    Author     : Vimal Kumar
+*/
+body{
+		background-color: rgba(209, 221, 226, 0.2);
+}
+span.add-btn {
+    font-size: 37px;
+    cursor: pointer;
+}
+.add-btn .fa-minus-circle {
+    color: #DE0303;
+}
+
+.checkbox label:after, 
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.radio, .checkbox{
+		display:inline-block;
+		float: right;
+}
+.free .radio, .free .checkbox,.multiselect-container .checkbox{
+    float: none;
+    display: inline;
+}
+.checkbox .cr,
+.radio .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: .25em;
+    width: 1.3em;
+    height: 1.3em;
+    float: left;
+    margin-right: .5em;
+}
+
+.radio .cr {
+    border-radius: 50%;
+}
+
+.checkbox .cr .cr-icon,
+.radio .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+}
+
+.radio .cr .cr-icon {
+    margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon,
+.radio label input[type="radio"] + .cr > .cr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+.radio label input[type="radio"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr,
+.radio label input[type="radio"]:disabled + .cr {
+    opacity: .5;
+}
+.control-label {
+    text-align: right;
+}
+.control-label p {
+    font-style: italic;
+    font-weight: 100;
+    font-size: 13px;
+}
+.options {
+    padding: 14px 0px;
+}
+.submit-btn {
+    margin-bottom: 13px;
+}
+.form-control-feedback{
+		    right: -19px;
+}
+.page-header {
+    margin: 10px 0px;
+}
+.page-header h1 {
+    font-size: 23px;
+}
+.panel-heading .nav-tabs{
+    float: right;
+}
+.panel-heading h3 {
+    float: left;
+    margin-top: 4px;
+}
+ul.add-question.col-md-4 {
+    list-style: none;
+}
+.add-question li span {
+    float: right;
+}
+.add-question li {
+    display: block;
+    font-size: 17px;
+    border: 1px solid #D0C8C8;
+    padding: 11px;
+}
+.finish {
+    float: right;
+}
+.custom-alert {
+    margin-top: 13px;
+    margin-bottom: 0px;
+    background: #fff;
+    border: none;
+    border-left: 3px solid #3c763d;
+    border-radius: 0px;
+}
+.content {
+    background: #fff;
+    padding: 2px 31px;
+    margin-top: 11px;
+				padding-bottom: 23px;
+}
+.col-md-12.child-ques {
+    border-top: 2px solid #000;
+				margin-top: 21px;
+}
+span.first {
+    margin-right: 14px;
+}
+.custom-height.panel-body {
+    max-height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.user-ans-essay.col-md-12 {
+    padding: 0px 11px;
+    background: #E4E4E4;
+    padding-bottom: 10px;
+}
+.eval-form{
+		    width: 100%;
+}
+#uploadForm {border-top:#F0F0F0 2px solid;background:#FAF8F8;padding:10px;}
+#uploadForm label {margin:2px; font-size:1em; font-weight:bold;}
+.demoInputBox{padding:5px; border:#F0F0F0 1px solid; border-radius:4px; background-color:#FFF;}
+#progress-bar {background-color: #12CC1A;height:20px;color: #FFFFFF;width:0%;-webkit-transition: width .3s;-moz-transition: width .3s;transition: width .3s;}
+.btnSubmit{background-color:#09f;border:0;padding:10px 40px;color:#FFF;border:#F0F0F0 1px solid; border-radius:4px;}
+#progress-div {	border-radius:4px;text-align:center;}
+#targetLayer{width:100%;text-align:center;}
+.form-inline .form-control {
+    width: 100%;
+}
+.upload-file-form .form-group.col-md-3 {
+    min-height: 90px;
+}
+.row.upload-file-form-1 {
+    background: #ccc;
+    padding: 10px 10px;
+    margin-bottom: 26px;
+}
+.form-control{
+		border-radius: 0px;
+}

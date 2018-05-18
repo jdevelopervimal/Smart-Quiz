@@ -1,0 +1,9 @@
+[24-Jun-2016 06:10:02 UTC] PHP Warning:  require(/home/juprix/public_html/www.digitalcoders.in/quiz1.0vendor/autoload.php): failed to open stream: No such file or directory in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/index.php on line 5
+[24-Jun-2016 06:10:02 UTC] PHP Fatal error:  require(): Failed opening required '/home/juprix/public_html/www.digitalcoders.in/quiz1.0vendor/autoload.php' (include_path='.:/opt/alt/php55/usr/share/pear:/opt/alt/php55/usr/share/php') in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/index.php on line 5
+[24-Jun-2016 06:31:22 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/frontend/config/main.php on line 37
+[24-Jun-2016 06:31:28 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/frontend/config/main.php on line 37
+[24-Jun-2016 06:33:19 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/frontend/config/main.php on line 37
+[24-Jun-2016 06:33:21 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/frontend/config/main.php on line 37
+[24-Jun-2016 06:33:33 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/frontend/config/main.php on line 37
+[24-Jun-2016 06:33:34 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/frontend/config/main.php on line 37
+[24-Jun-2016 06:33:37 UTC] PHP Parse error:  syntax error, unexpected ';', expecting ']' in /home/juprix/public_html/www.digitalcoders.in/quiz1.0/frontend/config/main.php on line 37
